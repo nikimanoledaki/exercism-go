@@ -5,7 +5,6 @@ import "errors"
 
 // Distance compares two strings and counts the differences.
 func Distance(a, b string) (int, error) {
-	var err error
 	if len(a) != len(b) {
 		return 0, errors.New("length of two strings must be equal")
 	}
@@ -17,5 +16,5 @@ func Distance(a, b string) (int, error) {
 		}
 	}
 
-	return difference, err
+	return difference, nil
 }
