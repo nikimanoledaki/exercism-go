@@ -1,17 +1,21 @@
 // Package hamming calculates the hamming distance.
 package hamming
 
-import "errors"
+import (
+	"errors"
+	"strings"
+)
 
 // Distance compares two strings and counts the differences.
 func Distance(a, b string) (int, error) {
-	if len(a) != len(b) {
+	charsA, charsB := strings.Split(a, ""), strings.Split(b, "")
+	if len(charsA) != len(charsB) {
 		return 0, errors.New("length of two strings must be equal")
 	}
 
 	var difference int
-	for index := range a {
-		if a[index] != b[index] {
+	for index := range charsA {
+		if charsA[index] != charsB[index] {
 			difference++
 		}
 	}

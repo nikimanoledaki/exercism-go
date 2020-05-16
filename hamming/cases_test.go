@@ -16,6 +16,12 @@ var testCases = []struct {
 		0,
 		false,
 	},
+	{ // runes in strands
+		"aeüa",
+		"a€Ãa",
+		2,
+		false,
+	},
 	{ // single letter identical strands
 		"A",
 		"A",
