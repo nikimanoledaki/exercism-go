@@ -4,10 +4,6 @@ import "fmt"
 
 // Convert converts a number intro a string.
 func Convert(number int) string {
-	if number%3 != 0 && number%5 != 0 && number%7 != 0 {
-		return fmt.Sprintf("%d", number)
-	}
-
 	var sounds string
 	if number%3 == 0 {
 		sounds += "Pling"
@@ -19,6 +15,10 @@ func Convert(number int) string {
 
 	if number%7 == 0 {
 		sounds += "Plong"
+	}
+
+	if sounds == "" {
+		return fmt.Sprintf("%d", number)
 	}
 
 	return sounds
