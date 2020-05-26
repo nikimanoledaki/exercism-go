@@ -1,6 +1,8 @@
 package raindrops
 
-import "fmt"
+import (
+	"strconv"
+)
 
 // Convert converts a number intro a string.
 func Convert(number int) string {
@@ -18,7 +20,8 @@ func Convert(number int) string {
 	}
 
 	if sounds == "" {
-		return fmt.Sprintf("%d", number)
+		s := strconv.Itoa(number)
+		return s
 	}
 
 	return sounds
