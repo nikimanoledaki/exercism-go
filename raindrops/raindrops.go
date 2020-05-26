@@ -20,8 +20,7 @@ func Convert(number int) string {
 	}
 
 	if sounds == "" {
-		s := strconv.Itoa(number)
-		return s
+		return strconv.Itoa(number)
 	}
 
 	return sounds
