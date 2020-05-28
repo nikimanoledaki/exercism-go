@@ -1,28 +1,18 @@
 package diffsquares
 
 // SquareOfSum is the square of the sum of the first N natural numbers.
-func SquareOfSum(number int) int {
-	var result int
-	for n := 1; n <= number; n++ {
-		result += n
-	}
-	result *= result
-	return result
+func SquareOfSum(n int) int {
+	return ((n * n) * (n + 1) * (n + 1)) / 4
 }
 
 // SumOfSquares is the sum of the squares of the first N natural numbers.
-func SumOfSquares(number int) int {
-	var result int
-	for n := 1; n <= number; n++ {
-		nSquared := n * n
-		result += nSquared
-	}
-	return result
+func SumOfSquares(n int) int {
+	return (n * (n + 1) * (2*n + 1)) / 6
 }
 
 // Difference is the difference between SquareOfSum and SumOfSquares.
-func Difference(number int) int {
-	return SquareOfSum(number) - SumOfSquares(number)
+func Difference(n int) int {
+	return (((n * n) * (n + 1) * (n + 1)) / 4) - (n * (n + 1) * (2*n + 1) / 6)
 }
 
 // SquareDifference returns the difference between the square of the sum and the sum of the squares of natural numbers.
