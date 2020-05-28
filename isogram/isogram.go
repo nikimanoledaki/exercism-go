@@ -7,10 +7,9 @@ func IsIsogram(word string) bool {
 	chars := make(map[rune]int)
 	for _, c := range word {
 		lowerC := unicode.ToLower(c)
-		if chars[lowerC] >= 1 {
+		if chars[lowerC] == 1 {
 			return false
-		}
-		if unicode.IsLetter(c) {
+		} else if unicode.IsLetter(c) {
 			chars[lowerC]++
 		}
 	}
