@@ -12,7 +12,7 @@ func SumOfSquares(n int) int {
 
 // Difference is the difference between SquareOfSum and SumOfSquares.
 func Difference(n int) int {
-	return (((n * n) * (n + 1) * (n + 1)) / 4) - (n * (n + 1) * (2*n + 1) / 6)
+	return SquareOfSum(n) - SumOfSquares(n)
 }
 
 // SquareDifference returns the difference between the square of the sum and the sum of the squares of natural numbers.
