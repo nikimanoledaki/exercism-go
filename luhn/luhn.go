@@ -21,16 +21,17 @@ func Valid(s string) bool {
 			return false
 		}
 
-		sum += n
+		digit := n
 
-		if i%2 != 0 {
-			sum += n
-
-			double := n * 2
-			if double > 9 {
-				sum -= 9
+		var secondDigit = (i%2 != 0)
+		if secondDigit {
+			digit += n
+			if digit > 9 {
+				digit -= 9
 			}
 		}
+
+		sum += digit
 	}
 	return sum%10 == 0
 }
