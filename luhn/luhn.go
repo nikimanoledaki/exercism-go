@@ -14,6 +14,7 @@ func Valid(s string) bool {
 	}
 
 	sum := 0
+	var secondDigit = false
 	for i := 0; i < length; i++ {
 		n, err := strconv.Atoi(string(s[length-1-i]))
 
@@ -22,8 +23,6 @@ func Valid(s string) bool {
 		}
 
 		digit := n
-
-		var secondDigit = (i%2 != 0)
 		if secondDigit {
 			digit += n
 			if digit > 9 {
@@ -32,6 +31,7 @@ func Valid(s string) bool {
 		}
 
 		sum += digit
+		secondDigit = !secondDigit
 	}
 	return sum%10 == 0
 }
