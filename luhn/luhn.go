@@ -1,37 +1,31 @@
 package luhn
 
 import (
-	"strconv"
 	"strings"
+	"unicode"
 )
 
 // Valid checks if a given string is valid according to the Luhn formula.
 func Valid(s string) bool {
 	s = strings.ReplaceAll(s, " ", "")
-	length := len(s)
-	if length < 2 {
-		return false
+	length, secondDigit := len(s), false
+	if length%2 == 0 {
+		secondDigit = true
 	}
-
 	sum := 0
-	var secondDigit = false
-	for i := 0; i < length; i++ {
-		n, err := strconv.Atoi(string(s[length-1-i]))
-
-		if err != nil {
+	for _, r := range s {
+		if !unicode.IsDigit(r) {
 			return false
 		}
-
-		digit := n
+		digit := int(r - '0')
 		if secondDigit {
-			digit += n
+			digit *= 2
 			if digit > 9 {
 				digit -= 9
 			}
 		}
-
 		sum += digit
 		secondDigit = !secondDigit
 	}
-	return sum%10 == 0
+	return length >= 2 && sum%10 == 0
 }
