@@ -8,11 +8,12 @@ import (
 // Valid checks if a given string is valid according to the Luhn formula.
 func Valid(s string) bool {
 	s = strings.ReplaceAll(s, " ", "")
-	length, secondDigit := len(s), false
-	if length%2 == 0 {
-		secondDigit = true
+	length := len(s)
+	if length < 2 {
+		return false
 	}
 	sum := 0
+	secondDigit := length%2 == 0
 	for _, r := range s {
 		if !unicode.IsDigit(r) {
 			return false
@@ -27,5 +28,5 @@ func Valid(s string) bool {
 		sum += digit
 		secondDigit = !secondDigit
 	}
-	return length >= 2 && sum%10 == 0
+	return sum%10 == 0
 }
