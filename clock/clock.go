@@ -19,19 +19,19 @@ func (c Clock) String() string {
 }
 
 // Add adds given minutes of type int to a Clock struct's minutes field.
-func (c Clock) Add(minutes int) Clock {
+func (c Clock) Add(minutes int) (clock Clock) {
 	c.minute += minutes
-	return c.CorrectTime()
+	return New(c.hour, c.minute)
 }
 
 // Subtract subtracts given minutes of type int to a Clock struct's minutes field.
-func (c Clock) Subtract(minutes int) Clock {
+func (c Clock) Subtract(minutes int) (clock Clock) {
 	c.minute -= minutes
-	return c.CorrectTime()
+	return New(c.hour, c.minute)
 }
 
 // CorrectTime adjusts the time according to the conventions for writing the time.
-func (c Clock) CorrectTime() Clock {
+func (c Clock) CorrectTime() (clock Clock) {
 	for c.minute < 0 {
 		c.minute += 60
 		c.hour--
@@ -45,5 +45,5 @@ func (c Clock) CorrectTime() Clock {
 	c.minute = c.minute % 60
 	c.hour = c.hour % 24
 
-	return c
+	return Clock{c.hour, c.minute}
 }
